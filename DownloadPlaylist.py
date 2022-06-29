@@ -3,6 +3,7 @@ install dependencies first:
 pip install pafy
 pip install youtube-dl==2020.12.2
 """
+import re
 import time
 import pafy
 
@@ -12,13 +13,21 @@ pafy.set_api_key("<YOUTUBE_API_KEY>")
 
 def writeVideoInfo(video, path=""):
     # open file to write vide info
-    videoInfoFile = open(file=path+str(video.title).replace("|", "") + ".txt", mode="w")
+    title = re.sub('[^0-9a-zA-Z()-]+', ' ', video.title)
+    videoInfoFile = open(file=path+title + ".txt", mode="w")
     # write video info
-    videoInfoFile.write(f"title: {video.title}\n")
+    try:
+        videoInfoFile.write(f"title: {video.title}\n")
+    except Exception as e:
+        videoInfoFile.write(f"title: {title}\n")
+        print(e)
     videoInfoFile.write(f"author: {video.author}\n")
     videoInfoFile.write(f"category: {video.category}\n")
     videoInfoFile.write(f"published: {video.published}\n")
-    videoInfoFile.write(f"description: {video.description}\n")
+    try:
+        videoInfoFile.write(f"description: {video.description}\n")
+    except Exception as e:
+        print(e)
     videoInfoFile.write(f"keywords: {video.keywords}\n")
     videoInfoFile.write(f"videoid: {video.videoid}\n")
     videoInfoFile.write(f"bigthumb: {video.bigthumb}\n")
@@ -38,11 +47,11 @@ url = "<PLAYLIST_URL>"
 
 # getting playlist
 playlist = pafy.get_playlist2(playlist_url=url)
+path = r"<PATH_TO_SAVE_PLAYLIST_IN>"
 
-for item in range(len(playlist)):
+for item in range(3, len(playlist)):
     url = playlist[item].getbestaudio()
-    path =r"<PATH_TO_SAVE_PLAYLIST_IN>"
     writeVideoInfo(playlist[item], path)
     url.download(filepath=path)
-    print("video", playlist[item].title, "done.")
+    print("video[", item, " ]", playlist[item].title, "done.")
     time.sleep(3)
