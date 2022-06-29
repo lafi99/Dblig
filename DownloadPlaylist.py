@@ -7,7 +7,7 @@ import time
 import pafy
 
 # youtube API key
-pafy.set_api_key("AIzaSyCtU2gIKBhRU5Ofa_9EwTFNr3glBxCNJkM")
+pafy.set_api_key("<YOUTUBE_API_KEY>")
 
 
 def writeVideoInfo(video, path=""):
@@ -41,6 +41,8 @@ playlist = pafy.get_playlist2(playlist_url=url)
 
 for item in range(len(playlist)):
     url = playlist[item].getbestaudio()
-    writeVideoInfo(playlist[0])
-    url.download(filepath=r"<PATH_TO_SAVE_PLAYLIST_IN>")
+    path =r"<PATH_TO_SAVE_PLAYLIST_IN>"
+    writeVideoInfo(playlist[item], path)
+    url.download(filepath=path)
+    print("video", playlist[item].title, "done.")
     time.sleep(3)
