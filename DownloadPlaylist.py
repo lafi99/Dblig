@@ -49,8 +49,12 @@ url = "<PLAYLIST_URL>"
 playlist = pafy.get_playlist2(playlist_url=url)
 path = r"<PATH_TO_SAVE_PLAYLIST_IN>"
 
-for item in range(3, len(playlist)):
-    url = playlist[item].getbestaudio()
+for item in range(len(playlist)):
+    try:
+        url = playlist[item].getbestaudio()
+    except Exception as e:
+        print("video[", item, " ] have ", e)
+        continue
     writeVideoInfo(playlist[item], path)
     url.download(filepath=path)
     print("video[", item, " ]", playlist[item].title, "done.")
