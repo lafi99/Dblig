@@ -99,7 +99,6 @@ path = r"<PATH_TO_SAVE_VIDEOS_IN>"
 
 for video in playlist.videos:
     try:
-        print(video.__str__())
         url = video.streams.get_audio_only()
         writeVideoInfo(video, path)
         url.download(path)
