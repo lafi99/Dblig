@@ -8,7 +8,7 @@ import time
 import pafy
 
 # youtube API key
-pafy.set_api_key("AIzaSyCtU2gIKBhRU5Ofa_9EwTFNr3glBxCNJkM")
+pafy.set_api_key("<YOUTUBE_API_KEY>")
 
 
 def writeVideoInfo(video, path=""):
@@ -93,11 +93,11 @@ def writeVideoInfo(video, path=""):
 
 # ###### playlist ##########
 # url of playlist
-url = "https://www.youtube.com/playlist?list=PLtUG5I3iHx9xrDX-WF9SEZo-7dScH88DV"
+url = "<PLAYLIST_URL>"
 
 # getting playlist
 playlist = pafy.get_playlist2(playlist_url=url)
-path = r"C:\Users\bushr\PycharmProjects\Blagin\videos\Chinese\课程-结构生物化学\\"
+path = r"<PATH_TO_SAVE_VIDEOS_IN>"
 
 for item in range(len(playlist)):
     try:
