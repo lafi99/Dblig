@@ -91,11 +91,11 @@ def writeVideoInfo(video, path=""):
 
 # ###### playlist ##########
 # url of playlist
-url = "https://www.youtube.com/playlist?list=PLI6pJZaOCtF0ggop6J02qaqYtPH3TAf-N"
+url = "<PLAYLIST_URL>"
 
 # getting playlist
 playlist = Playlist(url)
-path = r"C:\Users\bushr\PycharmProjects\Blagin\videos\Chinese\[科大]動力學\\"
+path = r"<PATH_TO_SAVE_VIDEOS_IN>"
 
 for video in playlist.videos:
     try:
