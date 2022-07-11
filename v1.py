@@ -10,14 +10,14 @@ def SpeakText(command):
     # engine.save_to_file(command, 'test.mp3')
     engine.runAndWait()
 
-
-en_1 = open("test sample/en-1.txt", "r").read()
-# SpeakText(en_1)
-
-en_2 = open("test sample/en-2.txt", "r").read()
-# SpeakText(en_2)
-
-en_3 = open("test sample/en-3.txt", "r").read()
+#
+# en_1 = open("test sample/en-1.txt", "r").read()
+# # SpeakText(en_1)
+#
+# en_2 = open("test sample/en-2.txt", "r").read()
+# # SpeakText(en_2)
+#
+# en_3 = open("test sample/en-3.txt", "r").read()
 # SpeakText(en_3)
 
 # can't read arabic text yet
