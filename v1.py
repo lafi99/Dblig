@@ -24,10 +24,19 @@ en_3 = open("test sample/en-3.txt", "r").read()
 # ar_3 = open("test sample/ar-3.txt", "r").read()
 # SpeakText(ar_3)
 
-# Changing voices
-engine = pyttsx3.init()
+engine = pyttsx3.init("sapi5")
 voices = engine.getProperty('voices')
-print(voices[0].id)
+for voice in voices:
+    print("ID: %s" % voice.id)
+    print("Name: %s" % voice.name)
+    print("Age: %s" % voice.age)
+    print("Gender: %s" % voice.gender)
+    print("Languages Known: %s" % voice.languages)
+
+# Changing voices
+# engine = pyttsx3.init()
+# voices = engine.getProperty('voices')
+# print(voices[0].id)
 # for voice in voices:
 #    engine.setProperty('voice', voice.id)
 #    engine.say('The quick brown fox jumped over the lazy dog.')
